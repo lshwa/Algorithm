@@ -1,0 +1,7 @@
+SELECT ID,
+    COALESCE((SELECT COUNT(*) FROM ECOLI_DATA WHERE PARENT_ID = A.ID), 0) AS CHILD_COUNT
+FROM ECOLI_DATA A
+ORDER BY ID;
+
+# 현재 ID(A.ID)가 부모가 되어 있는 경우, 그를 PARENT_ID로 갖는 행의 개수를 세는 서브 쿼리
+# COALESCE : 결과가 NULL일 경우 0으로 대체하는 함수 
